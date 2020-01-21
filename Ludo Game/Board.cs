@@ -21,17 +21,17 @@ namespace Ludo_Game
             Game game = new Game(r);
         }
 
-        public Board(String playerOneName, String playerTwoName, String playerThreeName, String playerFourName)
+        public Board(String redPlayerName, String greenPlayerName, String bluePlayerName, String yellowPlayerName)
         {
             InitializeComponent();
 
             Game game = new Game(r);
-            game.AddPlayers(playerOneName, playerTwoName, playerThreeName, playerFourName);
+            game.AddPlayers(redPlayerName, greenPlayerName, bluePlayerName, yellowPlayerName);
 
-            this.redPlayerNameLabel.Text = playerOneName;
-            this.greenPlayerNameLabel.Text = playerTwoName;
-            this.bluePlayerNameLabel.Text = playerThreeName;
-            this.yellowPlayerNameLabel.Text = playerFourName;
+            this.redPlayerNameLabel.Text = redPlayerName;
+            this.greenPlayerNameLabel.Text = greenPlayerName;
+            this.bluePlayerNameLabel.Text = bluePlayerName;
+            this.yellowPlayerNameLabel.Text = yellowPlayerName;
         }
     }
 }
