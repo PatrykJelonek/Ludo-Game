@@ -17,6 +17,7 @@ namespace Ludo_Game
         public Form1()
         {
             InitializeComponent();
+            
         }
     }
 }
