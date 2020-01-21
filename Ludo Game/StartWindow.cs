@@ -16,5 +16,15 @@ namespace Ludo_Game
         {
             InitializeComponent();
         }
+
+        private void startGameButton_Click(object sender, EventArgs e)
+        {
+            if(redPlayerNameTextBox.Text != "" && greenPlayerNameTextBox.Text != "" && bluePlayerNameTextBox.Text != "" && yellowPlayerNameTextBox.Text != "")
+            {
+                Board board = new Board();
+
+                board.Show();
+            }
+        }
     }
 }

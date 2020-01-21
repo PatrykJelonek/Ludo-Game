@@ -16,7 +16,7 @@ namespace Ludo_Game
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Board());
+            Application.Run(new StartWindow());
         }
     }
 }
