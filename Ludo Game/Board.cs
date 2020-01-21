@@ -14,24 +14,32 @@ namespace Ludo_Game
     {
         private Random r;
 
-        public Board()
+        public Board(int numberOfRounds)
         {
             InitializeComponent();
 
-            Game game = new Game(r);
+            Game game = new Game(r, numberOfRounds);
         }
 
-        public Board(String redPlayerName, String greenPlayerName, String bluePlayerName, String yellowPlayerName)
+        public Board(String[] playersNames, int numberOfRounds)
         {
             InitializeComponent();
 
-            Game game = new Game(r);
-            game.AddPlayers(redPlayerName, greenPlayerName, bluePlayerName, yellowPlayerName);
+            //Creating new game
+            Game game = new Game(r, numberOfRounds);
+            game.AddPlayers(playersNames);
 
-            this.redPlayerNameLabel.Text = redPlayerName;
-            this.greenPlayerNameLabel.Text = greenPlayerName;
-            this.bluePlayerNameLabel.Text = bluePlayerName;
-            this.yellowPlayerNameLabel.Text = yellowPlayerName;
+            //Set labels at board
+            this.setLabelsWithNames(playersNames);
+            this.numberOfRoundsLabel.Text = numberOfRounds.ToString();
+        }
+
+        private void setLabelsWithNames(String[] playersNames)
+        {
+            this.redPlayerNameLabel.Text = playersNames[0];
+            this.greenPlayerNameLabel.Text = playersNames[1];
+            this.bluePlayerNameLabel.Text = playersNames[2];
+            this.yellowPlayerNameLabel.Text = playersNames[3];
         }
     }
 }

@@ -108,6 +108,8 @@
             this.bluePlayerNameLabel = new System.Windows.Forms.Label();
             this.redPlayerNameLabel = new System.Windows.Forms.Label();
             this.yellowPlayerNameLabel = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.numberOfRoundsLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -861,44 +863,70 @@
             // greenPlayerNameLabel
             // 
             this.greenPlayerNameLabel.AutoSize = true;
+            this.greenPlayerNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.greenPlayerNameLabel.Location = new System.Drawing.Point(157, 84);
             this.greenPlayerNameLabel.Name = "greenPlayerNameLabel";
-            this.greenPlayerNameLabel.Size = new System.Drawing.Size(138, 25);
+            this.greenPlayerNameLabel.Size = new System.Drawing.Size(150, 25);
             this.greenPlayerNameLabel.TabIndex = 74;
             this.greenPlayerNameLabel.Text = "Green Player";
             // 
             // bluePlayerNameLabel
             // 
             this.bluePlayerNameLabel.AutoSize = true;
+            this.bluePlayerNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.bluePlayerNameLabel.Location = new System.Drawing.Point(903, 84);
             this.bluePlayerNameLabel.Name = "bluePlayerNameLabel";
-            this.bluePlayerNameLabel.Size = new System.Drawing.Size(122, 25);
+            this.bluePlayerNameLabel.Size = new System.Drawing.Size(133, 25);
             this.bluePlayerNameLabel.TabIndex = 75;
             this.bluePlayerNameLabel.Text = "Blue Player";
             // 
             // redPlayerNameLabel
             // 
             this.redPlayerNameLabel.AutoSize = true;
+            this.redPlayerNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.redPlayerNameLabel.Location = new System.Drawing.Point(157, 1278);
             this.redPlayerNameLabel.Name = "redPlayerNameLabel";
-            this.redPlayerNameLabel.Size = new System.Drawing.Size(118, 25);
+            this.redPlayerNameLabel.Size = new System.Drawing.Size(128, 25);
             this.redPlayerNameLabel.TabIndex = 76;
             this.redPlayerNameLabel.Text = "Red Player";
             // 
             // yellowPlayerNameLabel
             // 
             this.yellowPlayerNameLabel.AutoSize = true;
+            this.yellowPlayerNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.yellowPlayerNameLabel.Location = new System.Drawing.Point(903, 1278);
             this.yellowPlayerNameLabel.Name = "yellowPlayerNameLabel";
-            this.yellowPlayerNameLabel.Size = new System.Drawing.Size(143, 25);
+            this.yellowPlayerNameLabel.Size = new System.Drawing.Size(156, 25);
             this.yellowPlayerNameLabel.TabIndex = 77;
             this.yellowPlayerNameLabel.Text = "Yellow Player";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(13, 13);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(203, 25);
+            this.label1.TabIndex = 78;
+            this.label1.Text = "Number of Rounds: ";
+            // 
+            // numberOfRoundsLabel
+            // 
+            this.numberOfRoundsLabel.AutoSize = true;
+            this.numberOfRoundsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.numberOfRoundsLabel.Location = new System.Drawing.Point(203, 13);
+            this.numberOfRoundsLabel.Name = "numberOfRoundsLabel";
+            this.numberOfRoundsLabel.Size = new System.Drawing.Size(64, 25);
+            this.numberOfRoundsLabel.TabIndex = 79;
+            this.numberOfRoundsLabel.Text = "2345";
+            this.numberOfRoundsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Board
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1474, 1429);
+            this.Controls.Add(this.numberOfRoundsLabel);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.yellowPlayerNameLabel);
             this.Controls.Add(this.redPlayerNameLabel);
             this.Controls.Add(this.bluePlayerNameLabel);
@@ -1073,6 +1101,8 @@
         private System.Windows.Forms.Label bluePlayerNameLabel;
         private System.Windows.Forms.Label redPlayerNameLabel;
         private System.Windows.Forms.Label yellowPlayerNameLabel;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label numberOfRoundsLabel;
     }
 }
 

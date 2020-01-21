@@ -21,27 +21,27 @@ namespace Ludo_Game
         private int playerIndex;
         private int currentPlayerIndex;
         private int round;
+        private int numberOfRounds;
 
         private Player CurrentPlayer
         {
             get { return this.players[this.currentPlayerIndex]; }
         }
 
-        public Game(Random random)
+        public Game(Random random, int numberOfRounds)
         {
             this.dice = new Dice(random);
             this.players = new Player[NUMBER_OF_PLAYERS];
             this.playerIndex = 0;
             this.currentPlayerIndex = 0;
             this.round = 1;
+            this.numberOfRounds = numberOfRounds;
         }
 
-        public void AddPlayers(String first, String second, String third, String forth)
+        public void AddPlayers(string[] playersNames)
         {
-            this.AddPlayer(first);
-            this.AddPlayer(second);
-            this.AddPlayer(third);
-            this.AddPlayer(forth);
+            foreach(string playerName in playersNames)
+                this.AddPlayer(playerName);
         }
 
         private void AddPlayer(String name)
@@ -56,7 +56,7 @@ namespace Ludo_Game
         //TODO: Change function below
         public bool IsFinish()
         {
-            return true;
+            return round == numberOfRounds;
         }
     }
 }

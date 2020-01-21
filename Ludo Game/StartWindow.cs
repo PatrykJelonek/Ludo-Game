@@ -21,7 +21,7 @@ namespace Ludo_Game
         {
             if(redPlayerNameTextBox.Text != "" && greenPlayerNameTextBox.Text != "" && bluePlayerNameTextBox.Text != "" && yellowPlayerNameTextBox.Text != "")
             {
-                Board board = new Board(this.redPlayerNameTextBox.Text, this.greenPlayerNameTextBox.Text, this.bluePlayerNameTextBox.Text, this.yellowPlayerNameTextBox.Text);
+                Board board = new Board(new string[] { this.redPlayerNameTextBox.Text, this.greenPlayerNameTextBox.Text, this.bluePlayerNameTextBox.Text, this.yellowPlayerNameTextBox.Text }, Convert.ToInt32(this.numberOfRoundsNumbericBox.Value));
 
                 board.Show();
             }
