@@ -1,6 +1,6 @@
 ﻿namespace Ludo_Game
 {
-    partial class Form1
+    partial class Board
     {
         /// <summary>
         /// Wymagana zmienna projektanta.
@@ -104,6 +104,10 @@
             this.button70 = new System.Windows.Forms.Button();
             this.button71 = new System.Windows.Forms.Button();
             this.button72 = new System.Windows.Forms.Button();
+            this.greenPlayerNameLabel = new System.Windows.Forms.Label();
+            this.bluePlayerNameLabel = new System.Windows.Forms.Label();
+            this.redPlayerNameLabel = new System.Windows.Forms.Label();
+            this.yellowPlayerNameLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -260,7 +264,7 @@
             // button13
             // 
             this.button13.BackColor = System.Drawing.Color.White;
-            this.button13.FlatAppearance.BorderColor = System.Drawing.Color.Yellow;
+            this.button13.FlatAppearance.BorderColor = System.Drawing.Color.Gold;
             this.button13.FlatAppearance.BorderSize = 5;
             this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button13.Location = new System.Drawing.Point(1217, 751);
@@ -854,11 +858,51 @@
             this.button72.TabIndex = 70;
             this.button72.UseVisualStyleBackColor = false;
             // 
-            // Form1
+            // greenPlayerNameLabel
+            // 
+            this.greenPlayerNameLabel.AutoSize = true;
+            this.greenPlayerNameLabel.Location = new System.Drawing.Point(157, 84);
+            this.greenPlayerNameLabel.Name = "greenPlayerNameLabel";
+            this.greenPlayerNameLabel.Size = new System.Drawing.Size(138, 25);
+            this.greenPlayerNameLabel.TabIndex = 74;
+            this.greenPlayerNameLabel.Text = "Green Player";
+            // 
+            // bluePlayerNameLabel
+            // 
+            this.bluePlayerNameLabel.AutoSize = true;
+            this.bluePlayerNameLabel.Location = new System.Drawing.Point(903, 84);
+            this.bluePlayerNameLabel.Name = "bluePlayerNameLabel";
+            this.bluePlayerNameLabel.Size = new System.Drawing.Size(122, 25);
+            this.bluePlayerNameLabel.TabIndex = 75;
+            this.bluePlayerNameLabel.Text = "Blue Player";
+            // 
+            // redPlayerNameLabel
+            // 
+            this.redPlayerNameLabel.AutoSize = true;
+            this.redPlayerNameLabel.Location = new System.Drawing.Point(157, 1278);
+            this.redPlayerNameLabel.Name = "redPlayerNameLabel";
+            this.redPlayerNameLabel.Size = new System.Drawing.Size(118, 25);
+            this.redPlayerNameLabel.TabIndex = 76;
+            this.redPlayerNameLabel.Text = "Red Player";
+            // 
+            // yellowPlayerNameLabel
+            // 
+            this.yellowPlayerNameLabel.AutoSize = true;
+            this.yellowPlayerNameLabel.Location = new System.Drawing.Point(903, 1278);
+            this.yellowPlayerNameLabel.Name = "yellowPlayerNameLabel";
+            this.yellowPlayerNameLabel.Size = new System.Drawing.Size(143, 25);
+            this.yellowPlayerNameLabel.TabIndex = 77;
+            this.yellowPlayerNameLabel.Text = "Yellow Player";
+            // 
+            // Board
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1474, 1429);
+            this.Controls.Add(this.yellowPlayerNameLabel);
+            this.Controls.Add(this.redPlayerNameLabel);
+            this.Controls.Add(this.bluePlayerNameLabel);
+            this.Controls.Add(this.greenPlayerNameLabel);
             this.Controls.Add(this.button69);
             this.Controls.Add(this.button70);
             this.Controls.Add(this.button71);
@@ -936,13 +980,14 @@
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "Form1";
+            this.Name = "Board";
             this.Text = "Ludo Bordgame ";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -1024,6 +1069,10 @@
         private System.Windows.Forms.Button button70;
         private System.Windows.Forms.Button button71;
         private System.Windows.Forms.Button button72;
+        private System.Windows.Forms.Label greenPlayerNameLabel;
+        private System.Windows.Forms.Label bluePlayerNameLabel;
+        private System.Windows.Forms.Label redPlayerNameLabel;
+        private System.Windows.Forms.Label yellowPlayerNameLabel;
     }
 }
 
