@@ -167,6 +167,9 @@
             // button3
             // 
             this.button3.BackColor = System.Drawing.Color.White;
+            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.button3.FlatAppearance.BorderSize = 5;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Location = new System.Drawing.Point(793, 115);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(100, 100);
@@ -257,6 +260,9 @@
             // button13
             // 
             this.button13.BackColor = System.Drawing.Color.White;
+            this.button13.FlatAppearance.BorderColor = System.Drawing.Color.Yellow;
+            this.button13.FlatAppearance.BorderSize = 5;
+            this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button13.Location = new System.Drawing.Point(1217, 751);
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(100, 100);
@@ -347,6 +353,9 @@
             // button23
             // 
             this.button23.BackColor = System.Drawing.Color.White;
+            this.button23.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.button23.FlatAppearance.BorderSize = 5;
+            this.button23.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button23.Location = new System.Drawing.Point(581, 1175);
             this.button23.Name = "button23";
             this.button23.Size = new System.Drawing.Size(100, 100);
@@ -437,6 +446,9 @@
             // button33
             // 
             this.button33.BackColor = System.Drawing.Color.White;
+            this.button33.FlatAppearance.BorderColor = System.Drawing.Color.Green;
+            this.button33.FlatAppearance.BorderSize = 5;
+            this.button33.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button33.Location = new System.Drawing.Point(157, 539);
             this.button33.Name = "button33";
             this.button33.Size = new System.Drawing.Size(100, 100);
