@@ -147,9 +147,13 @@ namespace Ludo_Game
 
                         this.game.NextPlayer();
                         this.SetCurrentPlayerLabel();
+
+                        goto Exit;
                     }
 
                 } while (numberOfAttemptsToExit == Game.NUMBER_OF_POSIBILITY_TO_EXIT_START_POSITION);
+
+            Exit:;
             }     
         }
 
