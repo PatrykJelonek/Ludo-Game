@@ -16,6 +16,9 @@ namespace Ludo_Game
         private Button[] startPositionsButtons;
         private Game game;
 
+        private int currentDiceValue;
+        private int currentNumberOfAttemptsToExit;
+
         public Board(int numberOfRounds)
         {
             InitializeComponent();
@@ -91,6 +94,12 @@ namespace Ludo_Game
 
             //Current Player
             this.SetCurrentPlayerLabel();
+
+            //Set Dice
+            this.currentDiceValue = RollDiceAndChangeLabel();
+
+            //Set currentNumberOfAttemptsToExit
+            this.currentNumberOfAttemptsToExit = 0;
         }
 
         private void initializeRoute(Button[] buttons)
@@ -111,50 +120,54 @@ namespace Ludo_Game
 
         private void rollDiceButton_Click(object sender, EventArgs e)
         {
-            this.RollDiceAndChangeLabel();
+            this.currentDiceValue = this.RollDiceAndChangeLabel();
+            
+            this.NextAttemptToExit();    
         }
 
         private void MyButtonClick(object sender, EventArgs e)
         {
             Button button = sender as Button;
-            button.BackColor = Color.Black;
+            Player currentPlayer = this.game.CurrentPlayer;
+
+            if(currentPlayer.PlayerColor == button.BackColor)
+            {
+                int buttonIndex = this.GetButtonIndex(button);
+
+                if(buttonIndex + currentDiceValue >= this.route.Length)
+                route[currentPlayer.StartPosition].BackColor = currentPlayer.PlayerColor;
+                button.BackColor = Color.White;
+            }
         }
 
         private void StartPositionButton_Click(object sender, EventArgs e)
         {
             Button button = sender as Button;
-            int numberOfAttemptsToExit = 0;
-
             Player currentPlayer = this.game.CurrentPlayer;
-            
-            if(currentPlayer.PlayerColor == button.BackColor)
+
+            if(currentPlayer.PlayerColor == button.BackColor && this.CurrentPlayerCanStart)
             {
-                int diceValue;
-
-                do
+                if (currentPlayer.NumberOfFiguresAtStart < Player.NUMBER_OF_FIGURES)
                 {
-                    diceValue = RollDiceAndChangeLabel();
-
-                    if (diceValue != 6 && numberOfAttemptsToExit < Game.NUMBER_OF_POSIBILITY_TO_EXIT_START_POSITION)
+                    if(this.currentDiceValue == 6)
                     {
-                        numberOfAttemptsToExit++;
-                        continue;
-                    } else
+                        currentPlayer.Start();
+                        this.MoveToStart(button);
+                    }
+                } else
+                {
+                    if (this.currentDiceValue == 6)
                     {
-                        //Enter to game
-                        route[currentPlayer.StartPosition].BackColor = currentPlayer.PlayerColor;
-                        button.BackColor = Color.White;
-
-                        this.game.NextPlayer();
-                        this.SetCurrentPlayerLabel();
-
+                        currentPlayer.Start();
+                        this.MoveToStart(button);
                         goto Exit;
                     }
+                    //else
+                        //this.NextAttemptToExit();
+                }
 
-                } while (numberOfAttemptsToExit == Game.NUMBER_OF_POSIBILITY_TO_EXIT_START_POSITION);
-
-            Exit:;
-            }     
+                Exit:;
+            } 
         }
 
         private void SetCurrentPlayerLabel()
@@ -169,6 +182,66 @@ namespace Ludo_Game
             this.diceValueLabel.Text = diceValue.ToString();
 
             return diceValue;
+        }
+
+        private bool CurrentPlayerCanStart
+        {
+            get
+            {
+                Player currentPlayer = this.game.CurrentPlayer;
+
+                if (currentPlayer.PlayerColor == route[currentPlayer.StartPosition].BackColor)
+                    return false;
+                else
+                    return true;
+            }
+        }
+
+        private void MoveToStart(Button button)
+        {
+            Player currentPlayer = this.game.CurrentPlayer;
+
+            route[currentPlayer.StartPosition].BackColor = currentPlayer.PlayerColor;
+            button.BackColor = Color.White;
+
+            this.NextPlayer();
+        }
+
+        private void ResetNumberOfAttemptsToExit()
+        {
+            this.currentNumberOfAttemptsToExit = 0;
+        }
+
+        private void NextPlayer()
+        {
+            this.game.NextPlayer();
+            this.SetCurrentPlayerLabel();
+            this.currentDiceValue = this.RollDiceAndChangeLabel();
+            this.ResetNumberOfAttemptsToExit(); 
+        }
+
+        private void NextAttemptToExit()
+        {
+            if (this.currentNumberOfAttemptsToExit == Game.NUMBER_OF_POSIBILITY_TO_EXIT_START_POSITION - 1)
+                this.NextPlayer();
+            else
+                this.currentNumberOfAttemptsToExit++;    
+        }
+
+        private int GetButtonIndex(Button button)
+        {
+            int routeLenght = this.route.Length;
+            int index = 0;
+
+            foreach(Button buttonFromRoute in this.route)
+            {
+                if (button == buttonFromRoute)
+                    break;
+                else
+                    index++;
+            }
+
+            return index;
         }
     }
 }

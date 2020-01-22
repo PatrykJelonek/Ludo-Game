@@ -9,7 +9,7 @@ namespace Ludo_Game
 {
     class Player
     {
-        private const int NUMBER_OF_FIGURES = 4;
+        public const int NUMBER_OF_FIGURES = 4;
 
         //Player Information
         private readonly String name;
@@ -41,6 +41,11 @@ namespace Ludo_Game
         public int WinningRound
         {
             get { return this.winningRound; }
+        }
+
+        public int NumberOfFiguresAtStart
+        {
+            get { return this.numberOfFiguresAtStart; }
         }
 
         public Player(String name, Color color, int startPosition)

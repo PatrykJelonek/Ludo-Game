@@ -87,6 +87,7 @@
             this.redPlayerNameTextBox.Name = "redPlayerNameTextBox";
             this.redPlayerNameTextBox.Size = new System.Drawing.Size(218, 31);
             this.redPlayerNameTextBox.TabIndex = 3;
+            this.redPlayerNameTextBox.Text = "Patryk";
             // 
             // greenPlayerNameTextBox
             // 
@@ -94,6 +95,7 @@
             this.greenPlayerNameTextBox.Name = "greenPlayerNameTextBox";
             this.greenPlayerNameTextBox.Size = new System.Drawing.Size(218, 31);
             this.greenPlayerNameTextBox.TabIndex = 4;
+            this.greenPlayerNameTextBox.Text = "Wojtek";
             // 
             // bluePlayerNameTextBox
             // 
@@ -101,6 +103,7 @@
             this.bluePlayerNameTextBox.Name = "bluePlayerNameTextBox";
             this.bluePlayerNameTextBox.Size = new System.Drawing.Size(218, 31);
             this.bluePlayerNameTextBox.TabIndex = 5;
+            this.bluePlayerNameTextBox.Text = "Adam";
             // 
             // yellowPlayerNameTextBox
             // 
@@ -108,6 +111,7 @@
             this.yellowPlayerNameTextBox.Name = "yellowPlayerNameTextBox";
             this.yellowPlayerNameTextBox.Size = new System.Drawing.Size(218, 31);
             this.yellowPlayerNameTextBox.TabIndex = 6;
+            this.yellowPlayerNameTextBox.Text = "Pan Marcin";
             // 
             // redPlayerNameLabel
             // 

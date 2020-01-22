@@ -66,38 +66,6 @@ namespace Ludo_Game
            return this.dice.Roll();
         }
 
-        public void step()
-        {
-            Player player = this.CurrentPlayer;
-
-            if(!player.IsFinish())
-            {
-                int diceValue = this.dice.Roll();
-                
-                if(this.IsStartFigurePossible(player, diceValue))
-                {
-                    //Nowy pionek
-                } else
-                {
-                    //Move 
-
-                    if (player.IsFinish())
-                    {
-                        //AddItemToPalpitating
-                    }
-                    
-                }
-
-                if (diceValue != START_DICE_VALUE)
-                {
-                    this.NextPlayer();
-                }
-            } else
-            {
-                this.NextPlayer();
-            }
-        }
-
         private bool IsStartFigurePossible(Player player, int diceValue)
         {
             return diceValue == START_DICE_VALUE && player.HasFigureAtStart();
