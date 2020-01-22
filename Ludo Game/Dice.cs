@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ludo_Game
 {
-    class Dice
+    public class Dice
     {
         private const int MAX_VALUE = 6;
 

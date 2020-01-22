@@ -11,7 +11,7 @@ namespace Ludo_Game
     {
         //Game Constants
         public Color[] PLAYERS_COLORS = new Color[] { Color.Red, Color.Green, Color.RoyalBlue, Color.Yellow };
-        public int[] PLAYERS_START_INDEXES = new int[] { 0, 1, 2, 4 };
+        public int[] PLAYERS_START_INDEXES = new int[] { 22, 32, 2, 12 };
         public const int NUMBER_OF_PLAYERS = 4;
         private const int START_DICE_VALUE = 6;
 
@@ -57,6 +57,11 @@ namespace Ludo_Game
         public bool IsFinish()
         {
             return round == numberOfRounds;
+        }
+
+        public int rollDice()
+        {
+           return this.dice.Roll();
         }
     }
 }

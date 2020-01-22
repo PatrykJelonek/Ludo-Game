@@ -110,6 +110,8 @@
             this.yellowPlayerNameLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.numberOfRoundsLabel = new System.Windows.Forms.Label();
+            this.rollDiceButton = new System.Windows.Forms.Button();
+            this.diceValueLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -920,11 +922,33 @@
             this.numberOfRoundsLabel.Text = "2345";
             this.numberOfRoundsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // rollDiceButton
+            // 
+            this.rollDiceButton.Location = new System.Drawing.Point(1347, 1292);
+            this.rollDiceButton.Name = "rollDiceButton";
+            this.rollDiceButton.Size = new System.Drawing.Size(100, 100);
+            this.rollDiceButton.TabIndex = 80;
+            this.rollDiceButton.Text = "DICE";
+            this.rollDiceButton.UseVisualStyleBackColor = true;
+            this.rollDiceButton.Click += new System.EventHandler(this.rollDiceButton_Click);
+            // 
+            // diceValueLabel
+            // 
+            this.diceValueLabel.AutoSize = true;
+            this.diceValueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.diceValueLabel.Location = new System.Drawing.Point(706, 664);
+            this.diceValueLabel.Name = "diceValueLabel";
+            this.diceValueLabel.Size = new System.Drawing.Size(57, 61);
+            this.diceValueLabel.TabIndex = 81;
+            this.diceValueLabel.Text = "6";
+            // 
             // Board
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1474, 1429);
+            this.Controls.Add(this.diceValueLabel);
+            this.Controls.Add(this.rollDiceButton);
             this.Controls.Add(this.numberOfRoundsLabel);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.yellowPlayerNameLabel);
@@ -1103,6 +1127,8 @@
         private System.Windows.Forms.Label yellowPlayerNameLabel;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label numberOfRoundsLabel;
+        private System.Windows.Forms.Button rollDiceButton;
+        private System.Windows.Forms.Label diceValueLabel;
     }
 }
 
