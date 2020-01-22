@@ -11,6 +11,7 @@ namespace Ludo_Game
         private const int MAX_VALUE = 6;
 
         private readonly Random random;
+        private int value;
 
         public Dice(Random random)
         {
@@ -19,7 +20,14 @@ namespace Ludo_Game
 
         public int Roll()
         {
-            return this.random.Next(Dice.MAX_VALUE) + 1;
+            this.value = this.random.Next(Dice.MAX_VALUE) + 1;
+
+            return this.value;
+        }
+
+        public int Value
+        {
+            get { return this.value; }
         }
     }
 }

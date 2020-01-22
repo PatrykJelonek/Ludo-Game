@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Ludo_Game
 {
@@ -23,7 +24,7 @@ namespace Ludo_Game
         private int round;
         private int numberOfRounds;
 
-        private Player CurrentPlayer
+        public Player CurrentPlayer
         {
             get { return this.players[this.currentPlayerIndex]; }
         }
@@ -62,6 +63,56 @@ namespace Ludo_Game
         public int rollDice()
         {
            return this.dice.Roll();
+        }
+
+        public void step()
+        {
+            Player player = this.CurrentPlayer;
+
+            if(!player.IsFinish())
+            {
+                int diceValue = this.dice.Roll();
+                
+                if(this.IsStartFigurePossible(player, diceValue))
+                {
+                    //Nowy pionek
+                } else
+                {
+                    //Move 
+
+                    if (player.IsFinish())
+                    {
+                        //AddItemToPalpitating
+                    }
+                    
+                }
+
+                if (diceValue != START_DICE_VALUE)
+                {
+                    this.NextPlayer();
+                }
+            } else
+            {
+                this.NextPlayer();
+            }
+        }
+
+        private bool IsStartFigurePossible(Player player, int diceValue)
+        {
+            return diceValue == START_DICE_VALUE && player.HasFigureAtStart();
+        }
+
+        private void NextPlayer()
+        {
+            if (this.currentPlayerIndex < this.players.Length - 1)
+            {
+                this.currentPlayerIndex++;
+            }
+            else
+            {
+                this.currentPlayerIndex = 0;
+                this.round++;
+            }
         }
     }
 }

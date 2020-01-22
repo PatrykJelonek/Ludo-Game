@@ -88,6 +88,9 @@ namespace Ludo_Game
             //Start Positions
             this.startPositionsButtons = StartPositionsButtons;
             this.initializeStartPositionsButtons(this.startPositionsButtons);
+
+            //Current Player
+            this.SetCurrentPlayerLabel();
         }
 
         private void initializeRoute(Button[] buttons)
@@ -113,16 +116,21 @@ namespace Ludo_Game
             this.diceValueLabel.Text = diceValue.ToString();
         }
 
-        void MyButtonClick(object sender, EventArgs e)
+        private void MyButtonClick(object sender, EventArgs e)
         {
             Button button = sender as Button;
             button.BackColor = Color.Black;
         }
 
-        void MyButtonClick2(object sender, EventArgs e)
+        private void MyButtonClick2(object sender, EventArgs e)
         {
             Button button = sender as Button;
             button.BackColor = Color.White;
+        }
+
+        private void SetCurrentPlayerLabel()
+        {
+            this.currentPlayerLabel.Text = this.game.CurrentPlayer.Name;
         }
     }
 }

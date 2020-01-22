@@ -112,6 +112,8 @@
             this.numberOfRoundsLabel = new System.Windows.Forms.Label();
             this.rollDiceButton = new System.Windows.Forms.Button();
             this.diceValueLabel = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.currentPlayerLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -934,19 +936,44 @@
             // 
             // diceValueLabel
             // 
-            this.diceValueLabel.AutoSize = true;
+            this.diceValueLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.diceValueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.diceValueLabel.Location = new System.Drawing.Point(706, 664);
+            this.diceValueLabel.Location = new System.Drawing.Point(687, 642);
             this.diceValueLabel.Name = "diceValueLabel";
-            this.diceValueLabel.Size = new System.Drawing.Size(57, 61);
+            this.diceValueLabel.Size = new System.Drawing.Size(100, 106);
             this.diceValueLabel.TabIndex = 81;
             this.diceValueLabel.Text = "6";
+            this.diceValueLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(292, 13);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(155, 25);
+            this.label2.TabIndex = 82;
+            this.label2.Text = "Curent Player: ";
+            // 
+            // currentPlayerLabel
+            // 
+            this.currentPlayerLabel.AutoSize = true;
+            this.currentPlayerLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.currentPlayerLabel.Location = new System.Drawing.Point(437, 13);
+            this.currentPlayerLabel.Name = "currentPlayerLabel";
+            this.currentPlayerLabel.Size = new System.Drawing.Size(147, 25);
+            this.currentPlayerLabel.TabIndex = 83;
+            this.currentPlayerLabel.Text = "player_name";
+            this.currentPlayerLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Board
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1474, 1429);
+            this.Controls.Add(this.currentPlayerLabel);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.diceValueLabel);
             this.Controls.Add(this.rollDiceButton);
             this.Controls.Add(this.numberOfRoundsLabel);
@@ -1129,6 +1156,8 @@
         private System.Windows.Forms.Label numberOfRoundsLabel;
         private System.Windows.Forms.Button rollDiceButton;
         private System.Windows.Forms.Label diceValueLabel;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label currentPlayerLabel;
     }
 }
 
