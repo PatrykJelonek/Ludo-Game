@@ -81,7 +81,25 @@ namespace Ludo_Game
                 };
             }
         }
-        
+
+        private Button[] EndPositionsButtons
+        {
+            get
+            {
+                return new Button[]
+                {
+                    //Red Player End Positions Buttons
+                    this.button41, this.button42, this.button43, this.button44,
+                    //Green Player End Positions Buttons
+                    this.button53, this.button54, this.button55, this.button56,
+                    //Blue Player End Positions Buttons
+                    this.button45, this.button46, this.button47, this.button48,
+                    //Yellow Player End Positions Buttons
+                    this.button49, this.button50, this.button51, this.button52
+                };
+            }
+        }
+
         private void inizializeGame()
         {
             //Route
@@ -134,9 +152,19 @@ namespace Ludo_Game
             {
                 int buttonIndex = this.GetButtonIndex(button);
 
-                if(buttonIndex + currentDiceValue >= this.route.Length)
-                route[currentPlayer.StartPosition].BackColor = currentPlayer.PlayerColor;
-                button.BackColor = Color.White;
+                if(buttonIndex == currentPlayer.StartPosition - 1)
+                {
+
+                } else
+                {
+                    if (buttonIndex > this.route.Length - 1)
+                        buttonIndex = buttonIndex - this.route.Length;
+
+                    route[buttonIndex].BackColor = currentPlayer.PlayerColor;
+                    button.BackColor = Color.White;
+
+                    this.NextPlayer();
+                } 
             }
         }
 
@@ -222,7 +250,7 @@ namespace Ludo_Game
 
         private void NextAttemptToExit()
         {
-            if (this.currentNumberOfAttemptsToExit == Game.NUMBER_OF_POSIBILITY_TO_EXIT_START_POSITION - 1)
+            if (this.currentNumberOfAttemptsToExit == Game.NUMBER_OF_POSIBILITY_TO_EXIT_START_POSITION - 1 || this.game.CurrentPlayer.NumberOfFiguresAtStart != 4)
                 this.NextPlayer();
             else
                 this.currentNumberOfAttemptsToExit++;    
