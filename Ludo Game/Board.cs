@@ -105,15 +105,13 @@ namespace Ludo_Game
         {
             foreach (Button button in buttons)
             {
-                button.Click += MyButtonClick2;
+                button.Click += StartPositionButton_Click;
             }
         }
 
         private void rollDiceButton_Click(object sender, EventArgs e)
         {
-            int diceValue = this.game.rollDice();
-
-            this.diceValueLabel.Text = diceValue.ToString();
+            this.RollDiceAndChangeLabel();
         }
 
         private void MyButtonClick(object sender, EventArgs e)
@@ -122,15 +120,51 @@ namespace Ludo_Game
             button.BackColor = Color.Black;
         }
 
-        private void MyButtonClick2(object sender, EventArgs e)
+        private void StartPositionButton_Click(object sender, EventArgs e)
         {
             Button button = sender as Button;
-            button.BackColor = Color.White;
+            int numberOfAttemptsToExit = 0;
+
+            Player currentPlayer = this.game.CurrentPlayer;
+            
+            if(currentPlayer.PlayerColor == button.BackColor)
+            {
+                int diceValue;
+
+                do
+                {
+                    diceValue = RollDiceAndChangeLabel();
+
+                    if (diceValue != 6 && numberOfAttemptsToExit < Game.NUMBER_OF_POSIBILITY_TO_EXIT_START_POSITION)
+                    {
+                        numberOfAttemptsToExit++;
+                        continue;
+                    } else
+                    {
+                        //Enter to game
+                        route[currentPlayer.StartPosition].BackColor = currentPlayer.PlayerColor;
+                        button.BackColor = Color.White;
+
+                        this.game.NextPlayer();
+                        this.SetCurrentPlayerLabel();
+                    }
+
+                } while (numberOfAttemptsToExit == Game.NUMBER_OF_POSIBILITY_TO_EXIT_START_POSITION);
+            }     
         }
 
         private void SetCurrentPlayerLabel()
         {
             this.currentPlayerLabel.Text = this.game.CurrentPlayer.Name;
+            this.currentPlayerLabel.ForeColor = this.game.CurrentPlayer.PlayerColor;
+        }
+
+        private int RollDiceAndChangeLabel()
+        {
+            int diceValue = this.game.rollDice();
+            this.diceValueLabel.Text = diceValue.ToString();
+
+            return diceValue;
         }
     }
 }

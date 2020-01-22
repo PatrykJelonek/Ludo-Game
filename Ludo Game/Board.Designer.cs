@@ -674,7 +674,7 @@
             // 
             // button57
             // 
-            this.button57.BackColor = System.Drawing.Color.DodgerBlue;
+            this.button57.BackColor = System.Drawing.Color.RoyalBlue;
             this.button57.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.button57.FlatAppearance.BorderSize = 5;
             this.button57.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -686,7 +686,7 @@
             // 
             // button58
             // 
-            this.button58.BackColor = System.Drawing.Color.DodgerBlue;
+            this.button58.BackColor = System.Drawing.Color.RoyalBlue;
             this.button58.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.button58.FlatAppearance.BorderSize = 5;
             this.button58.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -698,7 +698,7 @@
             // 
             // button59
             // 
-            this.button59.BackColor = System.Drawing.Color.DodgerBlue;
+            this.button59.BackColor = System.Drawing.Color.RoyalBlue;
             this.button59.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.button59.FlatAppearance.BorderSize = 5;
             this.button59.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -710,7 +710,7 @@
             // 
             // button60
             // 
-            this.button60.BackColor = System.Drawing.Color.DodgerBlue;
+            this.button60.BackColor = System.Drawing.Color.RoyalBlue;
             this.button60.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.button60.FlatAppearance.BorderSize = 5;
             this.button60.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -722,7 +722,7 @@
             // 
             // button61
             // 
-            this.button61.BackColor = System.Drawing.Color.LimeGreen;
+            this.button61.BackColor = System.Drawing.Color.Green;
             this.button61.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.button61.FlatAppearance.BorderSize = 5;
             this.button61.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -734,7 +734,7 @@
             // 
             // button62
             // 
-            this.button62.BackColor = System.Drawing.Color.LimeGreen;
+            this.button62.BackColor = System.Drawing.Color.Green;
             this.button62.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.button62.FlatAppearance.BorderSize = 5;
             this.button62.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -746,7 +746,7 @@
             // 
             // button63
             // 
-            this.button63.BackColor = System.Drawing.Color.LimeGreen;
+            this.button63.BackColor = System.Drawing.Color.Green;
             this.button63.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.button63.FlatAppearance.BorderSize = 5;
             this.button63.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -758,7 +758,7 @@
             // 
             // button64
             // 
-            this.button64.BackColor = System.Drawing.Color.LimeGreen;
+            this.button64.BackColor = System.Drawing.Color.Green;
             this.button64.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.button64.FlatAppearance.BorderSize = 5;
             this.button64.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -770,10 +770,11 @@
             // 
             // button65
             // 
-            this.button65.BackColor = System.Drawing.Color.Firebrick;
+            this.button65.BackColor = System.Drawing.Color.Red;
             this.button65.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.button65.FlatAppearance.BorderSize = 5;
             this.button65.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button65.ForeColor = System.Drawing.Color.Red;
             this.button65.Location = new System.Drawing.Point(384, 1093);
             this.button65.Name = "button65";
             this.button65.Size = new System.Drawing.Size(100, 100);
@@ -782,10 +783,11 @@
             // 
             // button66
             // 
-            this.button66.BackColor = System.Drawing.Color.Firebrick;
+            this.button66.BackColor = System.Drawing.Color.Red;
             this.button66.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.button66.FlatAppearance.BorderSize = 5;
             this.button66.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button66.ForeColor = System.Drawing.Color.Red;
             this.button66.Location = new System.Drawing.Point(238, 1093);
             this.button66.Name = "button66";
             this.button66.Size = new System.Drawing.Size(100, 100);
@@ -794,10 +796,11 @@
             // 
             // button67
             // 
-            this.button67.BackColor = System.Drawing.Color.Firebrick;
+            this.button67.BackColor = System.Drawing.Color.Red;
             this.button67.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.button67.FlatAppearance.BorderSize = 5;
             this.button67.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button67.ForeColor = System.Drawing.Color.Red;
             this.button67.Location = new System.Drawing.Point(384, 947);
             this.button67.Name = "button67";
             this.button67.Size = new System.Drawing.Size(100, 100);
@@ -806,10 +809,11 @@
             // 
             // button68
             // 
-            this.button68.BackColor = System.Drawing.Color.Firebrick;
+            this.button68.BackColor = System.Drawing.Color.Red;
             this.button68.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.button68.FlatAppearance.BorderSize = 5;
             this.button68.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button68.ForeColor = System.Drawing.Color.Red;
             this.button68.Location = new System.Drawing.Point(238, 947);
             this.button68.Name = "button68";
             this.button68.Size = new System.Drawing.Size(100, 100);
@@ -818,7 +822,7 @@
             // 
             // button69
             // 
-            this.button69.BackColor = System.Drawing.Color.Gold;
+            this.button69.BackColor = System.Drawing.Color.Yellow;
             this.button69.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.button69.FlatAppearance.BorderSize = 5;
             this.button69.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -830,7 +834,7 @@
             // 
             // button70
             // 
-            this.button70.BackColor = System.Drawing.Color.Gold;
+            this.button70.BackColor = System.Drawing.Color.Yellow;
             this.button70.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.button70.FlatAppearance.BorderSize = 5;
             this.button70.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -842,7 +846,7 @@
             // 
             // button71
             // 
-            this.button71.BackColor = System.Drawing.Color.Gold;
+            this.button71.BackColor = System.Drawing.Color.Yellow;
             this.button71.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.button71.FlatAppearance.BorderSize = 5;
             this.button71.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -854,7 +858,7 @@
             // 
             // button72
             // 
-            this.button72.BackColor = System.Drawing.Color.Gold;
+            this.button72.BackColor = System.Drawing.Color.Yellow;
             this.button72.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.button72.FlatAppearance.BorderSize = 5;
             this.button72.FlatStyle = System.Windows.Forms.FlatStyle.Flat;

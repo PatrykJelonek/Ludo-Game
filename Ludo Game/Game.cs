@@ -12,7 +12,8 @@ namespace Ludo_Game
     {
         //Game Constants
         public Color[] PLAYERS_COLORS = new Color[] { Color.Red, Color.Green, Color.RoyalBlue, Color.Yellow };
-        public int[] PLAYERS_START_INDEXES = new int[] { 22, 32, 2, 12 };
+        private int[] PLAYERS_START_INDEXES = new int[] { 22, 32, 2, 12 };
+        public const int NUMBER_OF_POSIBILITY_TO_EXIT_START_POSITION = 4;
         public const int NUMBER_OF_PLAYERS = 4;
         private const int START_DICE_VALUE = 6;
 
@@ -102,7 +103,7 @@ namespace Ludo_Game
             return diceValue == START_DICE_VALUE && player.HasFigureAtStart();
         }
 
-        private void NextPlayer()
+        public void NextPlayer()
         {
             if (this.currentPlayerIndex < this.players.Length - 1)
             {
