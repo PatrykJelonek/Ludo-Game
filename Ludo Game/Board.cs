@@ -14,6 +14,7 @@ namespace Ludo_Game
     {
         private Button[] route;
         private Button[] startPositionsButtons;
+        private Button[] finishPositionsButtons;
         private Game game;
 
         private int currentDiceValue;
@@ -82,7 +83,7 @@ namespace Ludo_Game
             }
         }
 
-        private Button[] EndPositionsButtons
+        private Button[] FinishPositionsButtons
         {
             get
             {
@@ -109,6 +110,9 @@ namespace Ludo_Game
             //Start Positions
             this.startPositionsButtons = StartPositionsButtons;
             this.initializeStartPositionsButtons(this.startPositionsButtons);
+
+            //Finish Positions
+            this.finishPositionsButtons = FinishPositionsButtons;
 
             //Current Player
             this.SetCurrentPlayerLabel();
@@ -150,18 +154,41 @@ namespace Ludo_Game
 
             if(currentPlayer.PlayerColor == button.BackColor)
             {
-                int buttonIndex = this.GetButtonIndex(button);
+                int currentPosition = this.GetButtonIndex(button);
+                int buttonIndex = currentPosition + this.currentDiceValue;
+                int numberOfTransitions = Convert.ToInt32(button.Text.Trim());
 
-                if(buttonIndex == currentPlayer.StartPosition - 1)
+                if (numberOfTransitions + currentDiceValue > 39)
                 {
+                    int finishButtonNumber = numberOfTransitions + currentDiceValue - 39;
 
+                    if (finishButtonNumber < 5 && finishButtonNumber > 0)
+                    {
+                        if(this.FinishPositionsButtons[this.GetFinishButtonIndex(finishButtonNumber - 1)].BackColor != Color.Pink)
+                        {
+                            this.FinishPositionsButtons[this.GetFinishButtonIndex(finishButtonNumber - 1)].BackColor = Color.Pink;
+
+                            button.BackColor = Color.White;
+                            button.Text = null;
+
+                            currentPlayer.Finish();
+                            
+                        }
+
+                        NextPlayer();
+                    }
+                    else
+                        this.NextPlayer();
+                   
                 } else
                 {
                     if (buttonIndex > this.route.Length - 1)
                         buttonIndex = buttonIndex - this.route.Length;
 
                     route[buttonIndex].BackColor = currentPlayer.PlayerColor;
+                    route[buttonIndex].Text = Convert.ToString(numberOfTransitions + currentDiceValue);
                     button.BackColor = Color.White;
+                    button.Text = null;
 
                     this.NextPlayer();
                 } 
@@ -230,7 +257,10 @@ namespace Ludo_Game
             Player currentPlayer = this.game.CurrentPlayer;
 
             route[currentPlayer.StartPosition].BackColor = currentPlayer.PlayerColor;
+            route[currentPlayer.StartPosition].Text = button.Text;
+
             button.BackColor = Color.White;
+            button.Text = null;
 
             this.NextPlayer();
         }
@@ -267,6 +297,30 @@ namespace Ludo_Game
                     break;
                 else
                     index++;
+            }
+
+            return index;
+        }
+
+        private int GetFinishButtonIndex(int numberOfPosition)
+        {
+            int index = 0;
+
+            foreach (Button buttonFromArray in this.finishPositionsButtons)
+            {
+                Color kolorek = buttonFromArray.BackColor;
+                Color kolorekGracza = this.game.CurrentPlayer.PlayerColor;
+
+                if (buttonFromArray.BackColor == this.game.CurrentPlayer.PlayerColor)
+                    if(numberOfPosition == 0)
+                        break;
+                    else
+                    {
+                        numberOfPosition--;
+                        index++;
+                    }       
+                else
+                    index++;  
             }
 
             return index;

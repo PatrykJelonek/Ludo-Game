@@ -48,6 +48,11 @@ namespace Ludo_Game
             get { return this.numberOfFiguresAtStart; }
         }
 
+        public int NumberOfFiguresAtFinish
+        {
+            get { return this.numberOfFiguresAtFinish; }
+        }
+
         public Player(String name, Color color, int startPosition)
         {
             this.name = name;
