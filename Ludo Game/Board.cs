@@ -164,9 +164,9 @@ namespace Ludo_Game
 
                     if (finishButtonNumber < 5 && finishButtonNumber > 0)
                     {
-                        if(this.FinishPositionsButtons[this.GetFinishButtonIndex(finishButtonNumber - 1)].BackColor != Color.Pink)
+                        if(this.FinishPositionsButtons[this.GetFinishButtonIndex(finishButtonNumber - 2)].BackColor != Color.Pink)
                         {
-                            this.FinishPositionsButtons[this.GetFinishButtonIndex(finishButtonNumber - 1)].BackColor = Color.Pink;
+                            this.FinishPositionsButtons[this.GetFinishButtonIndex(finishButtonNumber - 2)].BackColor = Color.Pink;
 
                             button.BackColor = Color.White;
                             button.Text = null;
@@ -185,10 +185,11 @@ namespace Ludo_Game
                     if (buttonIndex > this.route.Length - 1)
                         buttonIndex = buttonIndex - this.route.Length;
 
-                    if(CurrentPlayerCanMove())
+                    if(route[buttonIndex].BackColor != this.game.CurrentPlayer.PlayerColor)
+                    {
                         this.MoveTo(button, buttonIndex, numberOfTransitions);
-
-                    this.NextPlayer();
+                        this.NextPlayer();
+                    }     
                 } 
             }
         }
@@ -266,10 +267,16 @@ namespace Ludo_Game
 
         private void NextPlayer()
         {
-            this.game.NextPlayer();
+            do
+            {
+                this.game.NextPlayer();
+            } while (!CurrentPlayerCanStart && !CurrentPlayerCanMove);
+            
+
             this.SetCurrentPlayerLabel();
             this.currentDiceValue = this.RollDiceAndChangeLabel();
-            this.ResetNumberOfAttemptsToExit(); 
+            this.ResetNumberOfAttemptsToExit();
+
         }
 
         private void NextAttemptToExit()
@@ -355,28 +362,31 @@ namespace Ludo_Game
             button.Text = null;
         }
 
-        private bool CurrentPlayerCanMove()
+        private bool CurrentPlayerCanMove
         {
-            bool valueToReturn = false;
-
-            foreach(Button button in route)
+            get
             {
-                if(button.BackColor == this.game.CurrentPlayer.PlayerColor)
+                bool valueToReturn = false;
+
+                foreach (Button button in route)
                 {
-                    int index = GetButtonIndex(button) + currentDiceValue;
-
-                    if (index > this.route.Length - 1)
-                        index = index - this.route.Length;
-                    
-                    if (route[index].BackColor != this.game.CurrentPlayer.PlayerColor)
+                    if (button.BackColor == this.game.CurrentPlayer.PlayerColor)
                     {
-                        valueToReturn = true;
-                        break;
-                    }     
-                }
-            }
+                        int index = GetButtonIndex(button) + currentDiceValue;
 
-            return valueToReturn;
+                        if (index > this.route.Length - 1)
+                            index = index - this.route.Length;
+
+                        if (route[index].BackColor != this.game.CurrentPlayer.PlayerColor)
+                        {
+                            valueToReturn = true;
+                            break;
+                        }
+                    }
+                }
+
+                return valueToReturn;
+            }
         }
     }
 }
