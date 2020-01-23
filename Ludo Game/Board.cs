@@ -113,6 +113,7 @@ namespace Ludo_Game
 
             //Finish Positions
             this.finishPositionsButtons = FinishPositionsButtons;
+            this.initializeFinishPositionsButtons(this.finishPositionsButtons);
 
             //Current Player
             this.SetCurrentPlayerLabel();
@@ -128,7 +129,7 @@ namespace Ludo_Game
         {
             foreach(Button button in buttons)
             {
-                button.Click += MyButtonClick;
+                button.Click += BoardField_Click;
             }
         }
 
@@ -140,6 +141,14 @@ namespace Ludo_Game
             }
         }
 
+        private void initializeFinishPositionsButtons(Button[] buttons)
+        {
+            foreach (Button button in buttons)
+            {
+                button.Click += FinishPositionButton_Click;
+            }
+        }
+
         private void rollDiceButton_Click(object sender, EventArgs e)
         {
             this.currentDiceValue = this.RollDiceAndChangeLabel();
@@ -147,7 +156,7 @@ namespace Ludo_Game
             this.NextAttemptToExit();
         }
 
-        private void MyButtonClick(object sender, EventArgs e)
+        private void BoardField_Click(object sender, EventArgs e)
         {
             Button button = sender as Button;
             Player currentPlayer = this.game.CurrentPlayer;
@@ -164,9 +173,9 @@ namespace Ludo_Game
 
                     if (finishButtonNumber < 5 && finishButtonNumber > 0)
                     {
-                        if(this.FinishPositionsButtons[this.GetFinishButtonIndex(finishButtonNumber - 2)].BackColor != Color.Pink)
+                        if(this.FinishPositionsButtons[this.GetFinishButtonIndex(finishButtonNumber - 1)].BackColor != Color.Pink)
                         {
-                            this.FinishPositionsButtons[this.GetFinishButtonIndex(finishButtonNumber - 2)].BackColor = Color.Pink;
+                            this.FinishPositionsButtons[this.GetFinishButtonIndex(finishButtonNumber - 1)].BackColor = Color.Pink;
 
                             button.BackColor = Color.White;
                             button.Text = null;
@@ -207,6 +216,9 @@ namespace Ludo_Game
                     {
                         currentPlayer.Start();
                         this.MoveToStart(button);
+
+                        if (currentPlayer.IsFinish())
+                            currentPlayerLabel.Text = currentPlayerLabel.Text + " (Winner!)";
                     }
                 } else
                 {
@@ -216,12 +228,44 @@ namespace Ludo_Game
                         this.MoveToStart(button);
                         goto Exit;
                     }
-                    //else
-                        //this.NextAttemptToExit();
                 }
 
                 Exit:;
             } 
+        }
+
+        private void FinishPositionButton_Click(object sender, EventArgs e)
+        {
+            Button button = sender as Button;
+            int numberOfFiledAtFinish = 0;
+            int indexOfButtonInArray = 0;
+
+            if(button.BackColor == Color.Pink && button.ForeColor == this.game.CurrentPlayer.PlayerColor)
+            {
+                foreach (Button a in finishPositionsButtons)
+                {
+                    if (a.ForeColor == this.game.CurrentPlayer.PlayerColor)
+                    {
+                        if (a == button)
+                            break;
+                        else
+                            numberOfFiledAtFinish++;
+                    }
+
+                    indexOfButtonInArray++;
+                }
+
+                if ((numberOfFiledAtFinish + currentDiceValue) < 4)
+                {
+                    if(finishPositionsButtons[indexOfButtonInArray + currentDiceValue].BackColor != Color.Pink)
+                    {
+                        button.BackColor = this.game.CurrentPlayer.PlayerColor;
+                        finishPositionsButtons[indexOfButtonInArray + currentDiceValue].BackColor = Color.Pink;
+
+                        NextPlayer();
+                    }    
+                }
+            }
         }
 
         private void SetCurrentPlayerLabel()
@@ -270,10 +314,9 @@ namespace Ludo_Game
             do
             {
                 this.game.NextPlayer();
-            } while (!CurrentPlayerCanStart && !CurrentPlayerCanMove);
+                this.SetCurrentPlayerLabel();
+            } while (!CurrentPlayerCanStart && !CurrentPlayerCanMove && !CurrentPlayerCanMoveAtFinish);
             
-
-            this.SetCurrentPlayerLabel();
             this.currentDiceValue = this.RollDiceAndChangeLabel();
             this.ResetNumberOfAttemptsToExit();
 
@@ -387,6 +430,44 @@ namespace Ludo_Game
 
                 return valueToReturn;
             }
+        }
+
+        private bool CurrentPlayerCanMoveAtFinish
+        {
+            get
+            {
+                bool valueToReturn = false;
+
+                int numberOfFiledAtFinish = 0;
+ 
+
+                foreach (Button button in finishPositionsButtons)
+                {
+                    if (button.ForeColor == this.game.CurrentPlayer.PlayerColor)
+                    {
+                        int index = GetFinishButtonIndex(numberOfFiledAtFinish);
+
+                        if ((numberOfFiledAtFinish + currentDiceValue) < 4)
+                        {
+                            if (finishPositionsButtons[index + currentDiceValue].BackColor != Color.Pink)
+                            {
+                                valueToReturn = true;
+                                break;
+                            }
+                        }
+
+                        numberOfFiledAtFinish++;
+                    }
+                }
+
+                return valueToReturn;
+            }
+        }
+
+        private void Board_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Space)
+                NextPlayer();
         }
     }
 }
