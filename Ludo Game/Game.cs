@@ -83,5 +83,18 @@ namespace Ludo_Game
                 this.round++;
             }
         }
+
+        public Player GetPlayerByColor(Color color)
+        {
+            Player playerToReturn = players[0];
+
+            foreach (Player player in this.players)
+            {
+                if (player.PlayerColor == color)
+                    playerToReturn = player;
+            }
+
+            return playerToReturn;
+        }
     }
 }

@@ -19,9 +19,11 @@ namespace Ludo_Game
         //Player Statistic
         private int numberOfFiguresAtStart;
         private int numberOfFiguresAtFinish;
+        private int numberOfAttemptsToExit = 4;
         private int numberOfHits;
         private int numberOfDeaths;
         private int winningRound;
+        
 
         public String Name
         {
@@ -51,6 +53,12 @@ namespace Ludo_Game
         public int NumberOfFiguresAtFinish
         {
             get { return this.numberOfFiguresAtFinish; }
+        }
+
+        public int NumberOfAttemptsToExit
+        {
+            get { return this.numberOfAttemptsToExit; }
+            set { this.numberOfAttemptsToExit = value; }
         }
 
         public Player(String name, Color color, int startPosition)
