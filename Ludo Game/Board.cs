@@ -152,8 +152,8 @@ namespace Ludo_Game
         private void rollDiceButton_Click(object sender, EventArgs e)
         {
             this.currentDiceValue = this.RollDiceAndChangeLabel();
-            
-            this.NextAttemptToExit();
+
+            this.NextAttemptToExit();    
         }
 
         private void BoardField_Click(object sender, EventArgs e)
@@ -181,7 +181,10 @@ namespace Ludo_Game
                             button.Text = null;
 
                             currentPlayer.Finish();
-                            
+
+                            //Wygrał jebany! 
+                            if (currentPlayer.IsFinish())
+                                currentPlayerLabel.Text = currentPlayerLabel.Text + " (Winner!)";
                         }
 
                         NextPlayer();
@@ -216,9 +219,6 @@ namespace Ludo_Game
                     {
                         currentPlayer.Start();
                         this.MoveToStart(button);
-
-                        if (currentPlayer.IsFinish())
-                            currentPlayerLabel.Text = currentPlayerLabel.Text + " (Winner!)";
                     }
                 } else
                 {
@@ -279,6 +279,21 @@ namespace Ludo_Game
             int diceValue = this.game.rollDice();
             this.diceValueLabel.Text = diceValue.ToString();
 
+            if (this.game.CurrentPlayer.HaveMoreThanOneThrow)
+            {
+                if (diceValue == 6 && CurrentPlayerCanStart)
+                    this.rollDiceButton.Enabled = false;
+                else
+                    this.rollDiceButton.Enabled = true;
+            }
+            else
+            {
+                if (!CurrentPlayerCanMoveAtFinish)
+                    NextPlayer();
+                else
+                    this.rollDiceButton.Enabled = false;
+            }
+
             return diceValue;
         }
 
@@ -316,18 +331,23 @@ namespace Ludo_Game
                 this.game.NextPlayer();
                 this.SetCurrentPlayerLabel();
             } while (!CurrentPlayerCanStart && !CurrentPlayerCanMove && !CurrentPlayerCanMoveAtFinish);
-            
-            this.currentDiceValue = this.RollDiceAndChangeLabel();
-            this.ResetNumberOfAttemptsToExit();
 
+            this.currentDiceValue = this.RollDiceAndChangeLabel();
+            this.ResetNumberOfAttemptsToExit(); 
         }
 
         private void NextAttemptToExit()
         {
-            if (this.currentNumberOfAttemptsToExit == Game.NUMBER_OF_POSIBILITY_TO_EXIT_START_POSITION - 1 || this.game.CurrentPlayer.NumberOfFiguresAtStart != 4)
+            if (this.currentNumberOfAttemptsToExit == Game.NUMBER_OF_POSIBILITY_TO_EXIT_START_POSITION - 1 || !this.game.CurrentPlayer.HaveMoreThanOneThrow)
                 this.NextPlayer();
-            else
-                this.currentNumberOfAttemptsToExit++;
+            else if(this.currentNumberOfAttemptsToExit == Game.NUMBER_OF_POSIBILITY_TO_EXIT_START_POSITION - 2)
+            {
+                if (currentDiceValue < 6)
+                    NextPlayer();
+                else
+                    this.currentNumberOfAttemptsToExit++;
+            } else
+                this.currentNumberOfAttemptsToExit++;  
         }
 
         private int GetButtonIndex(Button button)
@@ -440,7 +460,6 @@ namespace Ludo_Game
 
                 int numberOfFiledAtFinish = 0;
  
-
                 foreach (Button button in finishPositionsButtons)
                 {
                     if (button.ForeColor == this.game.CurrentPlayer.PlayerColor)

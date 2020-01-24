@@ -55,7 +55,6 @@ namespace Ludo_Game
             }
         }
 
-        //TODO: Change function below
         public bool IsFinish()
         {
             return round == numberOfRounds;

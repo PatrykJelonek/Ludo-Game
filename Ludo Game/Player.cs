@@ -55,10 +55,15 @@ namespace Ludo_Game
             get { return this.numberOfFiguresAtFinish; }
         }
 
-        public int NumberOfAttemptsToExit
+        public bool HaveMoreThanOneThrow
         {
-            get { return this.numberOfAttemptsToExit; }
-            set { this.numberOfAttemptsToExit = value; }
+            get
+            {
+                if (numberOfFiguresAtStart == 4)
+                    return true;
+                else
+                    return false;
+            }
         }
 
         public Player(String name, Color color, int startPosition)
