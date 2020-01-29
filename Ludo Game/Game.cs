@@ -59,7 +59,7 @@ namespace Ludo_Game
 
         public bool IsFinish()
         {
-            return round > numberOfRounds + 1;
+            return round == numberOfRounds + 1;
         }
 
         public void NextRound()
@@ -107,7 +107,7 @@ namespace Ludo_Game
             foreach(Player player in players)
             {
                 player.NumberOfFiguresAtFinish = 0;
-                player.NumberOfFiguresAtStart = 0;
+                player.NumberOfFiguresAtStart = Player.NUMBER_OF_FIGURES;
             }
         }
     }

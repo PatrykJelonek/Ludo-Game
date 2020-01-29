@@ -19,7 +19,6 @@ namespace Ludo_Game
         //Player Statistic
         private int numberOfFiguresAtStart;
         private int numberOfFiguresAtFinish;
-        private int numberOfAttemptsToExit = 4;
         private int numberOfHits;
         private int numberOfDeaths;
         private int winningRound;
@@ -79,7 +78,7 @@ namespace Ludo_Game
 
             this.numberOfHits = 0;
             this.numberOfDeaths = 0;
-            this.winningRound = -1;
+            this.winningRound = 0;
         }
 
         public void Start()
@@ -100,6 +99,7 @@ namespace Ludo_Game
             if (this.numberOfFiguresAtFinish < NUMBER_OF_FIGURES)
             {
                 this.numberOfFiguresAtFinish++;
+                winningRound++;
             }
         }
 

@@ -235,24 +235,11 @@ namespace Ludo_Game
 
             if(currentPlayer.PlayerColor == button.BackColor && this.CurrentPlayerCanStart)
             {
-                if (currentPlayer.NumberOfFiguresAtStart < Player.NUMBER_OF_FIGURES)
+                if (this.currentDiceValue == 6)
                 {
-                    if(this.currentDiceValue == 6)
-                    {
-                        currentPlayer.Start();
-                        this.MoveToStart(button);
-                    }
-                } else
-                {
-                    if (this.currentDiceValue == 6)
-                    {
-                        currentPlayer.Start();
-                        this.MoveToStart(button);
-                        goto Exit;
-                    }
+                    currentPlayer.Start();
+                    this.MoveToStart(button);
                 }
-
-                Exit:;
             } 
         }
 
@@ -530,6 +517,8 @@ namespace Ludo_Game
                 button.BackColor = Color.White;
                 button.Text = "";
             }
+
+            ResetNumberOfAttemptsToExit();
         }
     }
 }
