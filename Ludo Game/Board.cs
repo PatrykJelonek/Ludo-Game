@@ -287,12 +287,8 @@ namespace Ludo_Game
                     this.rollDiceButton.Enabled = true;
             }
             else
-            {
-                if (!CurrentPlayerCanMoveAtFinish)
-                    NextPlayer();
-                else
-                    this.rollDiceButton.Enabled = false;
-            }
+                rollDiceButton.Enabled = true;
+            
 
             return diceValue;
         }
@@ -326,14 +322,10 @@ namespace Ludo_Game
 
         private void NextPlayer()
         {
-            do
-            {
-                this.game.NextPlayer();
-                this.SetCurrentPlayerLabel();
-            } while (!CurrentPlayerCanStart && !CurrentPlayerCanMove && !CurrentPlayerCanMoveAtFinish);
-
+            this.game.NextPlayer();
+            this.SetCurrentPlayerLabel();
             this.currentDiceValue = this.RollDiceAndChangeLabel();
-            this.ResetNumberOfAttemptsToExit(); 
+            this.ResetNumberOfAttemptsToExit();
         }
 
         private void NextAttemptToExit()
@@ -375,7 +367,7 @@ namespace Ludo_Game
                 Color kolorek = buttonFromArray.BackColor;
                 Color kolorekGracza = this.game.CurrentPlayer.PlayerColor;
 
-                if (buttonFromArray.BackColor == this.game.CurrentPlayer.PlayerColor)
+                if (buttonFromArray.ForeColor == this.game.CurrentPlayer.PlayerColor)
                     if(numberOfPosition == 0)
                         break;
                     else
