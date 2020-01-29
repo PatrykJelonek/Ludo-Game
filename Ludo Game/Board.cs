@@ -194,16 +194,17 @@ namespace Ludo_Game
 
                             currentPlayer.Finish();
 
-                            //Wygrał jebany! 
                             if (currentPlayer.IsFinish())
                             {
                                 if (game.IsFinish())
                                 {
-                                    Board.ActiveForm.Enabled = false;
+                                    EndWindow endWindow = new EndWindow(currentPlayer.Name);
+                                    endWindow.Show();
                                 } else
                                 {
                                     ResetBoard();
                                     game.NextRound();
+                                    game.ResetPlayers();
                                 }
                             }
                         }

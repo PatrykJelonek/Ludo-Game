@@ -48,14 +48,16 @@ namespace Ludo_Game
         public int NumberOfFiguresAtStart
         {
             get { return this.numberOfFiguresAtStart; }
+            set { this.numberOfFiguresAtStart = value; }
         }
 
         public int NumberOfFiguresAtFinish
         {
             get { return this.numberOfFiguresAtFinish; }
+            set { this.numberOfFiguresAtFinish = value; }
         }
 
-        public bool HaveMoreThanOneThrow
+        public bool HaveMoreThanOneThrow 
         {
             get
             {

@@ -53,6 +53,12 @@
       <DependentUpon>Board.cs</DependentUpon>
     </Compile>
     <Compile Include="Dice.cs" />
+    <Compile Include="EndWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EndWindow.Designer.cs">
+      <DependentUpon>EndWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Game.cs" />
     <Compile Include="GameField.cs">
       <SubType>Component</SubType>
@@ -68,6 +74,9 @@
     </Compile>
     <EmbeddedResource Include="Board.resx">
       <DependentUpon>Board.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EndWindow.resx">
+      <DependentUpon>EndWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
