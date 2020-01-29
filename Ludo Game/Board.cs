@@ -429,8 +429,10 @@ namespace Ludo_Game
                 route[index].Text = Convert.ToString(numberOfTransitions+1);
 
             route[index].BackColor = this.game.CurrentPlayer.PlayerColor;
+            route[index].ForeColor = this.game.CurrentPlayer.PlayerColor;
 
             button.BackColor = Color.White;
+            button.ForeColor = Color.White;
             button.Text = null;
         }
 
@@ -509,7 +511,7 @@ namespace Ludo_Game
             foreach (Button button in FinishPositionsButtons)
             {
                 button.BackColor = button.ForeColor;
-                button.Text = Convert.ToString(0);
+                button.Text = "";
             }
 
             foreach (Button button in GameRoute)
