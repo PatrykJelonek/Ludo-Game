@@ -119,7 +119,7 @@ namespace Ludo_Game
             this.SetCurrentPlayerLabel();
 
             //Set Dice
-            RollDiceAndChangeLabel();
+            this.currentDiceValue = RollDiceAndChangeLabel();
 
             //Set currentNumberOfAttemptsToExit
             this.currentNumberOfAttemptsToExit = 0;
@@ -151,7 +151,7 @@ namespace Ludo_Game
 
         private void rollDiceButton_Click(object sender, EventArgs e)
         {
-            this.RollDiceAndChangeLabel();
+            this.currentDiceValue = this.RollDiceAndChangeLabel();
 
             this.NextAttemptToExit();    
         }
@@ -213,11 +213,24 @@ namespace Ludo_Game
 
             if(currentPlayer.PlayerColor == button.BackColor && this.CurrentPlayerCanStart)
             {
-                if(this.currentDiceValue == 6)
+                if (currentPlayer.NumberOfFiguresAtStart < Player.NUMBER_OF_FIGURES)
                 {
-                    currentPlayer.Start();
-                    this.MoveToStart(button);
+                    if(this.currentDiceValue == 6)
+                    {
+                        currentPlayer.Start();
+                        this.MoveToStart(button);
+                    }
+                } else
+                {
+                    if (this.currentDiceValue == 6)
+                    {
+                        currentPlayer.Start();
+                        this.MoveToStart(button);
+                        goto Exit;
+                    }
                 }
+
+                Exit:;
             } 
         }
 
@@ -261,19 +274,23 @@ namespace Ludo_Game
             this.currentPlayerLabel.ForeColor = this.game.CurrentPlayer.PlayerColor;
         }
 
-        private void RollDiceAndChangeLabel()
+        private int RollDiceAndChangeLabel()
         {
-            currentDiceValue = game.rollDice();
-            diceValueLabel.Text = currentDiceValue.ToString();
+            int diceValue = this.game.rollDice();
+            this.diceValueLabel.Text = diceValue.ToString();
 
-            if (game.CurrentPlayer.HaveMoreThanOneThrow)
+            if (this.game.CurrentPlayer.HaveMoreThanOneThrow)
             {
-                if (currentDiceValue == 6 && CurrentPlayerCanStart)
-                    rollDiceButton.Enabled = false;
+                if (diceValue == 6 && CurrentPlayerCanStart)
+                    this.rollDiceButton.Enabled = false;
                 else
-                    rollDiceButton.Enabled = true;
-            } else
+                    this.rollDiceButton.Enabled = true;
+            }
+            else
                 rollDiceButton.Enabled = true;
+            
+
+            return diceValue;
         }
 
         private bool CurrentPlayerCanStart
@@ -307,7 +324,7 @@ namespace Ludo_Game
         {
             this.game.NextPlayer();
             this.SetCurrentPlayerLabel();
-            this.RollDiceAndChangeLabel();
+            this.currentDiceValue = this.RollDiceAndChangeLabel();
             this.ResetNumberOfAttemptsToExit();
         }
 
