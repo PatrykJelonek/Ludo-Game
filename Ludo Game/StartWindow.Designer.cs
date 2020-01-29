@@ -45,6 +45,8 @@
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.numberOfRoundsNumbericBox = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -99,19 +101,19 @@
             // 
             // bluePlayerNameTextBox
             // 
+            this.bluePlayerNameTextBox.Enabled = false;
             this.bluePlayerNameTextBox.Location = new System.Drawing.Point(412, 314);
             this.bluePlayerNameTextBox.Name = "bluePlayerNameTextBox";
             this.bluePlayerNameTextBox.Size = new System.Drawing.Size(218, 31);
             this.bluePlayerNameTextBox.TabIndex = 5;
-            this.bluePlayerNameTextBox.Text = "Adam";
             // 
             // yellowPlayerNameTextBox
             // 
+            this.yellowPlayerNameTextBox.Enabled = false;
             this.yellowPlayerNameTextBox.Location = new System.Drawing.Point(412, 404);
             this.yellowPlayerNameTextBox.Name = "yellowPlayerNameTextBox";
             this.yellowPlayerNameTextBox.Size = new System.Drawing.Size(218, 31);
             this.yellowPlayerNameTextBox.TabIndex = 6;
-            this.yellowPlayerNameTextBox.Text = "Pan Marcin";
             // 
             // redPlayerNameLabel
             // 
@@ -177,7 +179,7 @@
             // 
             // pictureBox3
             // 
-            this.pictureBox3.BackColor = System.Drawing.Color.RoyalBlue;
+            this.pictureBox3.BackColor = System.Drawing.Color.DarkGray;
             this.pictureBox3.Location = new System.Drawing.Point(1, 288);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(814, 83);
@@ -186,7 +188,7 @@
             // 
             // pictureBox4
             // 
-            this.pictureBox4.BackColor = System.Drawing.Color.Yellow;
+            this.pictureBox4.BackColor = System.Drawing.Color.DarkGray;
             this.pictureBox4.Location = new System.Drawing.Point(1, 377);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(814, 83);
@@ -216,11 +218,33 @@
             this.label3.TabIndex = 16;
             this.label3.Text = "Number of Rounds:";
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(744, 316);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(28, 27);
+            this.checkBox1.TabIndex = 17;
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.Click += new System.EventHandler(this.checkBox1_Click);
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(744, 406);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(28, 27);
+            this.checkBox2.TabIndex = 18;
+            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.Click += new System.EventHandler(this.checkBox2_Click);
+            // 
             // StartWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(814, 688);
+            this.Controls.Add(this.checkBox2);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.numberOfRoundsNumbericBox);
             this.Controls.Add(this.yellowPlayerNameLabel);
@@ -269,5 +293,7 @@
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.NumericUpDown numberOfRoundsNumbericBox;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox checkBox2;
     }
 }

@@ -19,6 +19,7 @@ namespace Ludo_Game
 
         private int currentDiceValue;
         private int currentNumberOfAttemptsToExit;
+        private int currentNumberOfAvailableRollsADice = 0;
 
         public Board(int numberOfRounds)
         {
@@ -45,10 +46,21 @@ namespace Ludo_Game
 
         private void SetLabelsWithNames(String[] playersNames)
         {
-            this.redPlayerNameLabel.Text = playersNames[0];
-            this.greenPlayerNameLabel.Text = playersNames[1];
-            this.bluePlayerNameLabel.Text = playersNames[2];
-            this.yellowPlayerNameLabel.Text = playersNames[3];
+            int i = 0;
+
+            foreach(string playerName in playersNames)
+            {
+                if (i == 0)
+                    this.redPlayerNameLabel.Text = playerName;
+                if (i == 1)
+                    this.greenPlayerNameLabel.Text = playerName;
+                if (i == 2)
+                    this.bluePlayerNameLabel.Text = playerName;
+                if (i == 3)
+                    this.yellowPlayerNameLabel.Text = playerName;
+
+                i++;
+            }
         }
 
         private Button[] GameRoute
@@ -184,7 +196,16 @@ namespace Ludo_Game
 
                             //Wygrał jebany! 
                             if (currentPlayer.IsFinish())
-                                currentPlayerLabel.Text = currentPlayerLabel.Text + " (Winner!)";
+                            {
+                                if (game.IsFinish())
+                                {
+                                    Board.ActiveForm.Enabled = false;
+                                } else
+                                {
+                                    ResetBoard();
+                                    game.NextRound();
+                                }
+                            }
                         }
 
                         NextPlayer();
@@ -288,8 +309,11 @@ namespace Ludo_Game
             }
             else
                 rollDiceButton.Enabled = true;
-            
 
+
+            if (diceValue == 6)
+                currentNumberOfAvailableRollsADice++;
+            
             return diceValue;
         }
 
@@ -322,10 +346,15 @@ namespace Ludo_Game
 
         private void NextPlayer()
         {
-            this.game.NextPlayer();
-            this.SetCurrentPlayerLabel();
+            if (!(currentNumberOfAvailableRollsADice > 0))
+            {
+                this.game.NextPlayer();
+                this.SetCurrentPlayerLabel();
+                this.ResetNumberOfAttemptsToExit();
+            } else
+                currentNumberOfAvailableRollsADice--;
+
             this.currentDiceValue = this.RollDiceAndChangeLabel();
-            this.ResetNumberOfAttemptsToExit();
         }
 
         private void NextAttemptToExit()
@@ -479,6 +508,27 @@ namespace Ludo_Game
         {
             if (e.KeyCode == Keys.Space)
                 NextPlayer();
+        }
+
+        private void ResetBoard()
+        {
+            foreach (Button button in StartPositionsButtons)
+            {
+                button.BackColor = button.ForeColor;
+                button.Text = Convert.ToString(0);
+            }
+
+            foreach (Button button in FinishPositionsButtons)
+            {
+                button.BackColor = button.ForeColor;
+                button.Text = Convert.ToString(0);
+            }
+
+            foreach (Button button in GameRoute)
+            {
+                button.BackColor = Color.White;
+                button.Text = "";
+            }
         }
     }
 }

@@ -19,7 +19,7 @@ namespace Ludo_Game
 
         //Game Information
         private readonly Dice dice;
-        private readonly Player[] players;
+        private  Player[] players;
         private int playerIndex;
         private int currentPlayerIndex;
         private int round;
@@ -42,6 +42,8 @@ namespace Ludo_Game
 
         public void AddPlayers(string[] playersNames)
         {
+            this.players = new Player[playersNames.Length];
+
             foreach(string playerName in playersNames)
                 this.AddPlayer(playerName);
         }
@@ -58,6 +60,11 @@ namespace Ludo_Game
         public bool IsFinish()
         {
             return round == numberOfRounds;
+        }
+
+        public void NextRound()
+        {
+            this.round++;
         }
 
         public int rollDice()
